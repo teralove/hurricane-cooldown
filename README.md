@@ -13,6 +13,9 @@ The problem is when an abnormality such as hurricane overwrites another hurrican
 has no source data, thus unable to determine who casted the new hurricane.
 
 
-## Changelog
+## Changelog 
 ### 1.1.0
 * [+] Changed time intervals to be every 15s starting from 90s remaining.
+
+
+![Screenshot](http://i.imgur.com/oMZVc7c.jpg)
