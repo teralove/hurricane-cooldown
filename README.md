@@ -1,6 +1,6 @@
 # Hurricane Cooldown
 
-Sends notifications to user when their hurricane has proc'd, remaining time on cooldown, and when it's ready again.
+Sends notifications to yourself when hurricane has proc'd, remaining time on cooldown, and when it's ready again.
 
 
 ## Chat Commands
