@@ -1,9 +1,11 @@
-//vers 1.1
+//vers 1.2
 const MESSAGE_SENDER_NAME = 'Hurricane',
 ABNORMALITY_HURRICANE = 60010,
 HURRICANE_COOLDOWN = 119
 
 let SEND_MESSAGES = true
+
+const format = require('./format.js');
 
 module.exports = function HurricaneCooldown(dispatch) {
 	let cid = null,
@@ -60,23 +62,37 @@ module.exports = function HurricaneCooldown(dispatch) {
 	})
 	
 	dispatch.hook('cChat', (event) => {	  
-		if (/^<FONT>.hcd<\/FONT>$/i.test(event.message)) {
-			SEND_MESSAGES = !SEND_MESSAGES
-			var sendMessageStatus = SEND_MESSAGES ? 'enabled' : 'disabled'
-		  		  
-			dispatch.toClient('sChat', {
-			  channel: 2,
-			  authorID: { high: 0, low: 0 },
-			  unk1: 0,
-			  gm: 1,
-			  unk2: 0,
-			  authorName: MESSAGE_SENDER_NAME,
-			  message: '<FONT>Messages have been ' + sendMessageStatus + '</FONT>'
-			})
-		  return false
+		let command = format.stripTags(event.message).split(' ');
+		
+		if (['!hcd'].includes(command[0].toLowerCase())) {
+			toggleMessages;
+			return false;
 		}
-
 	 })
+	 
+	// slash support, thanks to wuaw for snippet
+	try {
+		const Slash = require('slash')
+		const slash = new Slash(dispatch)
+		slash.on('hcd', args => toggleMessages())
+	} catch (e) {
+		// do nothing because slash is optional
+	}
+	 
+	function toggleMessages() {
+		SEND_MESSAGES = !SEND_MESSAGES
+		var sendMessageStatus = SEND_MESSAGES ? 'enabled' : 'disabled'
+		  		  
+		dispatch.toClient('sChat', {
+			channel: 24,
+			authorID: { high: 0, low: 0 },
+			unk1: 0,
+			gm: 0,
+			unk2: 0,
+			authorName: '',
+			message: ' {' + MESSAGE_SENDER_NAME + '} ' + 'Messages have been ' + sendMessageStatus
+		}) 
+	}
 
 	function sendChatMessage(msg) {
 		if (!SEND_MESSAGES) return
@@ -85,11 +101,12 @@ module.exports = function HurricaneCooldown(dispatch) {
 			channel: 21,
 			authorID: { high: 0, low: 0 },
 			unk1: 0,
-			gm: 1,
+			gm: 0,
 			unk2: 0,
-			authorName: MESSAGE_SENDER_NAME,
-			message: '<FONT>' + msg + '</FONT>'
+			authorName: '',
+			message: msg
 		})
 	}
+	
 	
 }

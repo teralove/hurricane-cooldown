@@ -4,16 +4,19 @@ Sends notifications to user when their hurricane has proc'd, remaining time on c
 
 
 ## Chat Commands
-* Typing ".hcd" will toggle the notifications on and off
+* Typing "!hcd" will toggle the notifications on and off
 
 
 ## Known Bugs
-* No notification is sent if a hurricane debuff overwrites another hurricane. Notifications are only sent if the target has no hurricane currently applied.
-The problem is when an abnormality such as hurricane overwrites another hurricane on a target, the server sends "C_ABNORMALITY_REFRESH", which at the moment 
-has no source data, thus unable to determine who casted the new hurricane.
+* No notification is sent if your hurricane debuff overwrites another hurricane.
+The problem is the server sends "C_ABNORMALITY_REFRESH" instead, which has no source data, 
+thus unable to determine who casted the new hurricane.
 
 
 ## Changelog 
+### 1.2.0
+* [+] Changed command to require exclamation prefix '!'
+* [+] Changed chat notification channels and removed GM tag
 ### 1.1.0
 * [+] Changed time intervals to be every 15s starting from 90s remaining.
 
