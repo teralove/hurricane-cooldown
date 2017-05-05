@@ -16,6 +16,8 @@ thus unable to determine who casted the new hurricane.
 ## Changelog 
 ### 1.2.0
 * [+] Changed command to require exclamation prefix '!'
+* [+] Command no longer case-sensitive
+* [+] Add slash support
 * [+] Changed chat notification channels and removed GM tag
 ### 1.1.0
 * [+] Changed time intervals to be every 15s starting from 90s remaining.
