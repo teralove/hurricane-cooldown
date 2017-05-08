@@ -4,7 +4,7 @@ Sends notifications to yourself when hurricane has proc'd, remaining time on coo
 
 
 ## Chat Commands
-* Typing "!hcd" will toggle the notifications on and off
+* !hcd - Toggles the notifications off/on.
 
 
 ## Known Bugs
@@ -14,6 +14,8 @@ thus unable to determine who casted the new hurricane.
 
 
 ## Changelog 
+### 1.2.1
+* [+] Added C_WHISPER hook
 ### 1.2.0
 * [+] Changed command to require exclamation prefix '!'
 * [+] Command no longer case-sensitive
