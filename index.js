@@ -80,7 +80,7 @@ module.exports = function HurricaneCooldown(dispatch) {
 	}
 	 
 	function toggleMessages() {
-		SendMessages = !SendMessagesl
+		SendMessages = !SendMessages;
 		  		  
 		dispatch.toClient('S_CHAT', {
 			channel: 24,
