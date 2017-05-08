@@ -17,7 +17,7 @@ module.exports = function HurricaneCooldown(dispatch) {
 	dispatch.hook('S_ABNORMALITY_BEGIN', 1, event => { 
 		if(event.source.equals(cid) && event.id == ABNORMALITY_HURRICANE)
 		{
-			sendChatMessage('Hurricane has been applied');
+			sendChatMessage(' Hurricane has been applied');
 			
 			hurricaneTimer = setInterval(() => {
 			switch (hurricaneTime) {
